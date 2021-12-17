@@ -1,0 +1,43 @@
+version: '3'
+services:
+  nginx:
+    depends_on:
+      - nodeserver
+      - reactfront
+    restart: always
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  postgresdb:
+    image: postgres:latest
+    env_file:
+      - ./docker-env/postgres/use.env
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+  nodeserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - "4000:4000"
+    env_file:
+      - ./docker-env/node/prod.env
+    command: sh -c "sleep 3 && npm run unmigrate && npm run migrate && npm run seed && npm start"
+    depends_on:
+      - postgresdb
+    restart: on-failure
+  reactfront:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    #ports:
+    #  - "3000:3000"
+  
+volumes:
+  pgdata:
+    driver: local

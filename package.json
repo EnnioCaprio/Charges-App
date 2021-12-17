@@ -1,0 +1,39 @@
+{
+  "name": "projectfull",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "make-migrate": "npx knex migrate:make init --migrations-directory ./data/migrations",
+    "migrate": "npx knex migrate:latest --knexfile ./data/knexfile.js",
+    "seed": "npx knex seed:run --knexfile ./data/knexfile.js",
+    "unmigrate": "npx knex migrate:rollback --knexfile ./data/knexfile.js",
+    "test": "jest -- src/__test__/*",
+    "testing": "chmod +x ./bin/test.sh && NODE_ENV=test bash ./bin/test.sh",
+    "devs": "cross-env DEBUG=knex:query nodemon src/index.js",
+    "start": "node src/index.js",
+    "cypress-test": "chmod +x ./bin/cypress.sh && NODE_ENV=production bash ./bin/cypress.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-tools/merge": "^6.2.14",
+    "apollo-server-express": "^2.25.2",
+    "bcrypt": "^5.0.1",
+    "connect-session-knex": "^2.1.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^4.0.8",
+    "jest": "^27.0.6",
+    "knex": "^0.21.16",
+    "nodemon": "^2.0.14",
+    "passport": "^0.5.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.6.0"
+  }
+}

@@ -1,0 +1,6 @@
+Testing client: 
+    docker build -t react-test ./client -f Dockerfile.dev
+    docker run -e CI=true -p 3000:3000 react-test
+
+Testing backend:
+    npm run testing
