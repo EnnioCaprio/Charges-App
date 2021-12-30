@@ -1,4 +1,4 @@
-<h1>Charges-App</h1>
+# Charges-App
 
 Hi, this is the charges application
 
