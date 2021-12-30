@@ -1,8 +1,10 @@
+#Charges-App
+
 Hi, this is the charges application
 
 Charges Application is an application created to facilitate employee organization hours. I used ReactJS (Redux) and Node as the main stack (Express/GraphQL for backend/API and Knex for database queries). Employees can register as they want and can add their weekly work hours inside the system.
 
-Deployment: Git, GitHub, Docker for containerization, and DigitalOcean.
+Deployment: Git, GitHub, Docker for containerization and DigitalOcean.
 
 <h1>Suggestions</h1>
 
